@@ -17,7 +17,7 @@
 define('APPROOT', dirname(dirname(__FILE__)));
 
 // URL Root (Se debe de actualizar, siempre que vaya a pasar a ambiente de producción, para habilitar el HOST a utilizar)
-define('URLROOT', 'http://localhost/is-tecnocontract');
+define('URLROOT', 'http://localhost/is-tecnocontract/');
 
 //Site name
 

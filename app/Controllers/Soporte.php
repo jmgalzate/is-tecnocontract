@@ -2,7 +2,8 @@
 
 require APPROOT.'/Models/Formularios.php';
 
-
+#TODO: agregar condicional if para evitar errores de salida:
+    
 $nombreSolicitante = $_GET['inputNombre'];
 $emailSolicitante = $_GET['inputEmail'];
 $telefonoSolicitante = $_GET['inputTelefono'];
@@ -19,5 +20,3 @@ $reqIngresado = $insertReq->insertReq($inputReq);
 
 //$query = 'select * from departamentos';
 //$departamentos= $form->getDepartamentos($query);
-
-require APPROOT.'/Views/formularios/v_soporte.php'; 

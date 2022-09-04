@@ -1,6 +1,11 @@
 <?php
-    require __DIR__.'/app/Config/config.php';
-    include __DIR__.'/app/Views/inc/header.php';
+
+#Configuración de variables
+require __DIR__.'/app/Config/config.php';
+
+#Encabezado de página
+include __DIR__.'/app/Views/inc/header.php';
+
 ?>
 
 <h1>Contratos Tecnológicos</h1>
@@ -33,6 +38,8 @@
 
 <p>Pasa saber más de nosotros dale clic <a href="<?php echo 'pages/acerca.php' ?>">aquí</a></p>
 
-<?php
 
-    include __DIR__.'/app/Views/inc/footer.php'; 
+<?php
+#Pie de página
+include __DIR__.'/app/Views/inc/footer.php';
+?>

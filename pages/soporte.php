@@ -54,6 +54,7 @@ include '../app/Views/inc/header.php';
 
 <?php 
 //require APPROOT.'/Controllers/Soporte.php';
+//require APPROOT.'/Views/formularios/v_soporte.php'; 
 
 ?>
 
