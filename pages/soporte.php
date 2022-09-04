@@ -11,7 +11,7 @@ include '../app/Views/inc/header.php';
 <h1>Solicitud de soporte técnico</h1>
 
 <div>
-<form class="row g-3" method="GET" action="?">
+<form class="row g-3" method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
   <div class="col-md-3">
     <label for="inputNombre" class="form-label">Nombre</label>
     <input type="text" class="form-control" id="inputNombre" name="inputNombre">
@@ -47,18 +47,19 @@ include '../app/Views/inc/header.php';
   <textarea class="form-control" aria-label="Detalle del requerimiento" id="inputObservacion" name="inputObservacion"></textarea>
 </div>
   <div class="col-12">
-    <button type="submit" class="btn btn-primary">Enviar</button>
+    <button type="submit" class="btn btn-primary" name="enviarContactanos" id="enviarContactanos">Enviar</button>
   </div>
 </form>
 </div>
 
 <?php 
-//require APPROOT.'/Controllers/Soporte.php';
-//require APPROOT.'/Views/formularios/v_soporte.php'; 
 
-?>
+if (isset($_POST['enviarContactanos'])) {
+ require_once APPROOT.'/Controllers/Soporte.php';
 
-<?php
+ echo $inputReq ;
+}
+
 #Pie de página
 include '../app/Views/inc/footer.php';
 ?>

@@ -4,15 +4,14 @@ require APPROOT.'/Models/Formularios.php';
 
 #TODO: agregar condicional if para evitar errores de salida:
     
-$nombreSolicitante = $_GET['inputNombre'];
-$emailSolicitante = $_GET['inputEmail'];
-$telefonoSolicitante = $_GET['inputTelefono'];
-$tipoRequerimiento = $_GET['tipoRequerimiento'];
-$inputPrioridad = $_GET['inputPrioridad'];
-$observacionSolicitante = $_GET['inputObservacion'];
+    $nombreSolicitante = $_POST['inputNombre'];
+    $emailSolicitante = $_POST['inputEmail'];
+    $telefonoSolicitante = $_POST['inputTelefono'];
+    $tipoRequerimiento = $_POST['tipoRequerimiento'];
+    $inputPrioridad = $_POST['inputPrioridad'];
+    $observacionSolicitante = $_POST['inputObservacion'];
 
-#TODO: revisar por qué no insertaron los valores:
-$inputReq = "INSER INTO requerimiento (tiporeqid, nombre, email, telefono, observacion, prioridad) VALUES ('".$tipoRequerimiento."', '".$nombreSolicitante."', '".$emailSolicitante."', '".$telefonoSolicitante."', '".$observacionSolicitante."', ".$inputPrioridad.")";
+$inputReq = "INSERT INTO requerimiento (tiporeqid, nombre, email, telefono, observacion, prioridad, fechareq) VALUES ('".$tipoRequerimiento."', '".$nombreSolicitante."', '".$emailSolicitante."', '".$telefonoSolicitante."', '".$observacionSolicitante."', ".$inputPrioridad.", '".date('Y-m-d H:i:s')."')";
 
 $form = new Formularios();
 $reqIngresado = $insertReq->insertReq($inputReq);
