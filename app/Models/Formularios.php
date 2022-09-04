@@ -16,10 +16,4 @@ class Formularios extends Database {
         $this->id = $this->db->lastInsertId();
         return $this->id;
     }
-/*
-    public function getDepartamentos ($data) {
-        $this->db->query($data);
-        return $this->db->resultSet();
-    }
-    */
 }
