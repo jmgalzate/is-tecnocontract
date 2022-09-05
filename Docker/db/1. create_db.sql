@@ -1286,3 +1286,19 @@ INSERT INTO tiporeq (tiporeqid, nombre, descripcion) VALUES
 ('MAN','Mantenimiento','Actualizaciones, depuraciones de data'),
 ('ASE','Asesoría','Solicitud de asesoría');
 
+INSERT INTO empresas (empresaid, nit, nombre, direccion, www, ciudadid) VALUES 
+('TEC', 123456789, 'TecnoContract', 'Carrera búsquela', 'is-tecnocontract/index.php', 135),
+('EVA', 9876544321, 'Empresas Varias', 'Carrera encuentrelea', 'empresas.com', 135),
+('DOM', 6574635478, 'De otro mundo', 'Calle Festivo', 'otromundo.com', 135);
+
+INSERT INTO personas (documento, nombre, email, celular, empresaid) VALUES 
+(77668899, 'Admin 1', 'admin1@usuario.com', '300000000', 'TEC'),
+(99887766, 'Admin 2', 'admin2@usuario.com', '300000000', 'TEC'),
+(99887866, 'Usuario 1', 'usuario1@usuario.com', '300000000', 'EVA'),
+(55667744, 'Usuario 2', 'usuario2@usuario.com', '300000000', 'DOM');
+
+INSERT INTO roles (rolid, nombre, descripcion, permisos) VALUES
+('ADM','Admin', 'Administración', 'Completos'),
+('USU','Usuario', 'Usuario de las empresas', 'Accede a los datos de su empresa'),
+('ASR','Asesor', 'Asesor de la empresa para gestionar el formulario de requerimientos', 'Gestión de formularios');
+
