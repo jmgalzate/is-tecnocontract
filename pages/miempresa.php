@@ -13,9 +13,8 @@ include '../app/Views/inc/header.php';
 <div class="position-relative" style="margin-right: 30%; margin-left:30%; margin-top:2%; padding: 3%;">
 <form>
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Correo Electrónico</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-    <div id="emailHelp" class="form-text">No compartimos tu correo electrónico con nadie más.</div>
+    <label for="inputLogin" class="form-label">Usuario</label>
+    <input type="text" class="form-control" id="inputLogin" >
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Contraseña</label>

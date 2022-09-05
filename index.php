@@ -7,12 +7,12 @@ require __DIR__.'/app/Config/config.php';
 include __DIR__.'/app/Views/inc/header.php';
 
 ?>
-<div style="margin-left: 10%; margin-top: 5%">
+<div style="margin-left: 5%; margin-top: 5%">
 <h1 >Contratos Tecnológicos</h1>
 <h2 >Tecno Contract S.A.</h2>
 
 <h3 >Somos tu aliado estratégico para la gestión de la información de tu empresa</h3>
-
+</br>
 <p>En nuestra página WEB podrás realizar las siguientes gestiones:</p>
 
 <ui>
@@ -22,10 +22,12 @@ include __DIR__.'/app/Views/inc/header.php';
     <li>Enviar la confirmación de tu pago</li>
 </ui>
 
+</br>
 
 <h3>Nuestros servicios: </h3>
 
-<table>
+<div style="margin-right: 20%; margin-left: 20%;">
+<table class="table table-hover">
     <tr>
         <th>Servicio</th>
         <th>Descripción</th>
@@ -55,6 +57,7 @@ include __DIR__.'/app/Views/inc/header.php';
         <td>Creemos firmemente que la información es el primer canal para que tu empresa pueda crecer, por eso, ofrecemos nuestro servicio de visualización de la data, para que puedas contar con ella, en cortes al día que te permitan tomar decisiones con mayor prontitud</td>
     </tr>
 </table>
+</div>
 
 <p>Pasa saber más de nosotros dale clic <a href="<?php echo 'pages/acerca.php' ?>">aquí</a></p>
 <p>Si quieres contratar uno de nuestros servicios, ponte en contancto con nosotros dando <a href="<?php echo 'pages/contactanos.php' ?>">clic aquí</a>, y uno de nuestros asesores se pondrá en contacto contigo</p>
