@@ -17,12 +17,6 @@
     <!-- Icons library -->
     <script src="https://kit.fontawesome.com/73d11385a4.js" crossorigin="anonymous"></script>
 
-    <!-- Style sheet -->
-    <link rel="stylesheet" href="<?php APPROOT ?>/public/css/style.css" />
-
-    <!-- Java Script functions -->
-    <script src="<?php APPROOT ?>/public/js/main.js"></script>
-
     <?php
     /** PHP functions */
     require(APPROOT . '/public/php/functions.php');

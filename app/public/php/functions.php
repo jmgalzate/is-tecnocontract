@@ -1,32 +1,5 @@
 <?php
 
-function table($data) {
-echo '<tr>';
-
-      foreach ($data as $arrayKey => $valor) {
-                echo "<th scope='col'>".$arrayKey."</th>";
-            };
-
-echo "</tr>";
-echo "<tr>";
-          foreach ($data as $arrayKey => $valor) {
-                echo "<td>".$valor."</td>";
-
-            }
-echo "</tr>";
-};
-
-function tableTotal($momento,$colspan,$data) {
-echo '<tr>
-  <td rowspan="'.$colspan.'">'.$momento.'</td>';
-          foreach ($data as $arrayKey => $valor) {
-              foreach ($valor as $key => $value) {
-                echo "<td>".$value."</td>";
-              }
-            echo "</tr>";
-            }
-};
-
 function arraysql ($result) {
   $arrayresult=array();
   if (mysqli_num_rows($result) > 0) {
@@ -38,7 +11,7 @@ function arraysql ($result) {
 };
 
 
-
+/** This function read the table headers and after that the table rows */
 function bigtable($data) {
   echo "<tr>";
   
