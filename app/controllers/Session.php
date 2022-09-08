@@ -7,12 +7,23 @@ class Session extends Controller
     {
     }
 
+    public function login() {
+        $data = [
+            'page' => 'Login',
+        ];
+
+        $this->view('Session/login', $data);
+    }
+
     public function startSession()
     {
+        /** If a session has not been started, it'll proceed to check the login information */
         if (!isset($_SESSION['login_name']) || !isset($_SESSION['type_user'])) {
             $errores = '';
             $errorSession = '';
-            if (isset($_POST['submit'])) {
+
+            
+            if (isset($_POST['sendLogin'])) {
                 $usuario = $_POST['usuario'];
                 $password = $_POST['password'];
 
@@ -20,7 +31,7 @@ class Session extends Controller
                     !empty($usuario) ? $usuario = filter_var($usuario, FILTER_SANITIZE_STRING) : $errores .= 'Por favor ingresa un usuario <br />';
                     !empty($password) ? $password : $errores .= 'Por favor ingresa tu password <br />';
                 } else {
-                    $login = $this->dashModel = $this->model('Session');
+                    $login = $this->dashModel = $this->model('SessionM');
                     $login->startSession($usuario, $password);
                     $dataLog = $login->sessionarray;
 
@@ -40,12 +51,15 @@ class Session extends Controller
             }
 
             $data = [
-                'title' => 'Welcome'
+                'title' => 'Bienvenid@'
             ];
 
-            $this->view('pages/login', $data);
+            $this->view('Session/login', $data);
+
         } else {
-            header("Location:" . URLROOT . "/pages/portal");
+            
+            /** If a session is already opened, will be directioned to main page */
+            header("Location:" . URLROOT . "Pages/portal");
         }
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-class Session extends Controller
+class SessionM extends Controller
 {
     private $db;
     private $sessionInfo;
@@ -15,7 +15,7 @@ class Session extends Controller
 
     function getSession($names, $passwords)
     {
-        $query = "SELECT username, type_user FROM users_login WHERE username = '$names' AND passwords = MD5('$passwords')";
+        $query = "SELECT username, rolid type_user FROM usuarios WHERE username = '$names' AND pass = MD5('$passwords')";
         $this->db->query($query);
         return $this->db->single();
     }

@@ -19,12 +19,15 @@ class Formularios extends Controller
 
     public function soporte()
     {
-
+        if (!isset($_SESSION['login_name']) || !isset($_SESSION['type_user'])) {
+            header("Location:" . URLROOT . "Session/login");
+        } else {
         $data = [
             'page' => 'Soporte',
         ];
 
         $this->view('Formularios/soporte', $data);
+    }
     }
 
     public function gestionFormu()
