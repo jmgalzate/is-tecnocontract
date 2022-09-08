@@ -1,0 +1,44 @@
+# Virtual Host configuration for example.com
+#
+# You can move that to a different file under sites-available/ and symlink that
+# to sites-enabled/ to enable it.
+#
+server {
+	listen 8001;
+	listen [::]:8001;
+
+	server_name _;
+
+	root /var/www/is-tecnocontract;
+	index index.php index.html index.htm;
+
+	#Nueva configuración añadida desde acá{
+	autoindex on;
+
+	if (-e $request_filename) {
+		break;
+	}
+
+	rewrite ^/([a-zA-Z0-9]+)$ /index.php?controller=$1 last;
+	rewrite ^/([a-zA-Z0-9]+)/([a-zA-Z0-9]+)$ /index.php?controller=$1&action=$2 last;
+	#Hasta acá }
+
+	location / {
+		try_files $uri $uri/ =404;
+	}
+
+	#pass PHP scripts to FastCGI server
+	
+	location ~ \.php$ {
+		
+		include 	snippets/fastcgi-php.conf;
+		fastcgi_pass 	unix:/var/run/php/php8.1-fpm.sock;
+
+		#Nueva configuración añdida desde acá{
+		fastcgi_split_path_info 	^(.+\.php)(.*)$;
+		#fastcgi_index 			index.php;
+		fastcgi_param SCRIPT_FILENAME 	$document_root$fastcgi_script_name;
+		include 			fastcgi_params;
+		#Hasta acá}
+	}
+}
