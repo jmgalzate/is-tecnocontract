@@ -56,7 +56,8 @@ class Formularios extends Controller
                 'inputTelefono' => isset($_POST['inputTelefono']) ? $inputTelefono = $_POST['inputTelefono'] : $inputTelefono = '',
                 'tipoRequerimiento' => isset($_POST['tipoRequerimiento']) ? $tipoRequerimiento = $_POST['tipoRequerimiento'] : $tipoRequerimiento = '',
                 'inputPrioridad' => isset($_POST['inputPrioridad']) ? $inputPrioridad = $_POST['inputPrioridad'] : $inputPrioridad = '',
-                'inputObservacion' => isset($_POST['inputObservacion']) ? $inputObservacion = $_POST['inputObservacion'] : $inputObservacion = ''
+                'inputObservacion' => isset($_POST['inputObservacion']) ? $inputObservacion = $_POST['inputObservacion'] : $inputObservacion = '',
+                'username' => isset($_SESSION['login_name']) ? $_SESSION['login_name'] : 'Generico'
             ];
         }
 
