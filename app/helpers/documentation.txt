@@ -1,0 +1,74 @@
+Notas de la versión 1.0 (12-07-2020)
+- Se crea el formulario base.
+- Quedan creadas las tablas relacionales.
+- No se calcula el porcentaje de calificación, ya que por el momento, sólo se está recibiendo la data.
+- Quedan los botones básicos para agregar información al formulario.
+
+Notas de la versión 1.1 (19-07-2020)
+- Se resuelve la inserción alfanumérica para el campo ID de la gestión (Ticket - Digiturno - CALL ID)
+- Se resuelve la insreción del campo Imputabilidad no SPC a la base de datos.
+- Desde la base de datos, queda el procedure para el cálculo de los errores críticos y no críticos.
+- Se inicia el proyecto front-end desde el index y la navbar.
+- Se inicia el proceso de organizar el código de la versión 1.0 donde se generaron líneas rápidas para salir con el producto, pero es necesario normalizarlas con el uso de consultas a la base de datos, funciones y POO.
+
+Notas de la versión 1.2 (25-07-2020)
+
+- Los botones de navegación se incluyen en un NAV Bar para dejarlo como position FIXED en el lado izquierdo. 
+- Se organiza el estido de los campos Working.
+- Al formulario se le implementa la etiqueta Required para dejar obligatorios algunos campos del mismo.
+- Se cambia la estructura de las páginas que conforman el formulario de calidad, con el fin de que sea más entendible a quien vaya a hacerle mantenimiento posterior.
+- Se agrega DIV de validación de si el ID en revisión ya existe en la base de datos, para no duplicar gestión.
+
+
+Notas de la versión 1.3 (25-07-2020)
+- Se incluye Boostrap 3 para disminuir código en la hoja de estilos CSS. 
+- Se empieza a diseñar la hoja Consulta del formulario. 
+- La información de la hoja Create queda organiada en formatos con tablas para hacerlo más cómodo a la vista.
+- Se incluye productividad On-Line en la hoja Create, para que el analista lleve el control del día de su gestión
+
+Notas de la versión 1.4 (28-07-2020)
+- Se agregan las Guias de monitoreo de Retención + Wapp Móvil + Redes Sociales.
+- Se agrega página de consulta de Working de los canales.
+- Se agregan las listas de Motivo y Tipo sugeridas por el equipo de trabajo.
+- Se modifican los estilos de los botones sucess
+
+Notas de la versión 1.5 (29-07-2020)
+- Se agrega una página de información general de cómo va la gestión del analista.
+
+Notas de la versión 1.6 (02-08-2020)
+- Se corrige la variable de inserción de la regional y el nombre supervisor. Pues estaban trocadas.
+- Según el tipo de usuario, en la gestión de hoy, se muestra, o la gestión propia como asesor, o la gestión grupal
+- Se agregan redirecionamientos automáticos al iniciar y cerrar la sesión
+- Se crea el formulario para los GTR y su respectiva Base de datos.
+
+Notas de la versión 1.7 (18-08-2020)
+Formulario Calidad:
+- Se incluye módulo de retención para capturar información relevante del negocio.
+- Se segmentan las listas de Tipo_PQR
+- Se segmentan las listas de Motivo_PQR
+- Se agrega campo Expresiones del asesor
+- Se agrega validador de préstamo de aplicativos
+- Queda incluído título de monitoreos dirigidos
+- Se cambian las opciones Cliente Crítico y SPC por listas desplegables
+
+Notas de la versión 2.0
+- Se inicia migración del portal a arquitectura MVC
+- Se agrega opción de carga masiva para el Working
+- Se crea vista para consultar el monitoreo
+- Se enlazan las listas desplegables. 
+
+Notas de la versión 3.0
+•	Se migró a arquitectura MVC con Framework Artesanal.
+•	Se incluye enlace directo a la hoja de Power BI que tiene la selección de los canales.
+•	Se actualiza la hoja de Dash Board para que tanto el analista, el supervisor y el cliente (Andrea), puedan hacer un seguimiento más a fondo de la cantidad de monitoreos que se llevan en el mes / productividad individual y grupal.
+•	Se resuelve BUG para navegación en el formulario sin login. 
+•	Se resuelve BUG de selección de TIPO PQR, dependiendo de GRUPO y NEGOCIO.
+•	Depuración de la base de datos: 
+	Queda homologado el campo grupo de la tabla calidad_monitoreo, por lo cual, puedes hacer el distinct para ver los grupos que quedaron habilitados.
+	Quedan homologadas las regionales de todos los meses, mostrándolas como: KONECTA, EMTELCO, BOGOTA, NOROCCIDENTE, OCCIDENTE, ORIENTE y COSTA
+	Se creó el campo negocio en la tabla calidad_monitoreo, con el fin de separar los negocios Fijo, Móvil y a futuro, Edatel.
+	Se creó el campo frente en la tabla calidad_asesor, con el fin de separar los frentes DIGITAL, NO PRESENCIAL y PRESENCIAL.
+	Queda actualizada la tabla working_canales, con la última información que nos compartieron los 4 frentes: DIGITAL (KONECTA), NO PRESENCIAL (EMTELCO), PRESENCIAL (TIENDAS) y BACK OFFICE (INDRA).
+	Se depuran y actualizan los campos relacionados al Working en la tabla calidad_asesor, sin embargo, aún quedan más de 100 registros por actualizar, pues no existen en los Working.
+	Se depura el campo tipo_gestion de la tabla calidad_monitoreo, para que exista un solo Auditoría.
+
