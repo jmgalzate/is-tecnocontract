@@ -1,24 +1,27 @@
-<?php  
+<?php
 
-Class Session Extends Controller {
+class Session extends Controller
+{
     private $db;
     private $sessionInfo;
     private $name, $password;
     public $session, $sessionarray;
 
-    function __construct () { 
+    function __construct()
+    {
         $this->db = new Database;
     }
 
-    
-    function getSession ($names, $passwords) { 
+
+    function getSession($names, $passwords)
+    {
         $query = "SELECT username, type_user FROM users_login WHERE username = '$names' AND passwords = MD5('$passwords')";
         $this->db->query($query);
         return $this->db->single();
-
     }
 
-    function startSession (string $name, string $password) { 
+    function startSession(string $name, string $password)
+    {
         $this->name = $name;
         $this->password = $password;
 
@@ -29,11 +32,11 @@ Class Session Extends Controller {
         return $this->sessionarray;
     }
 
-    function closeSession () {
-       
+    function closeSession()
+    {
+
         session_destroy();
 
-        header( "refresh:0; url= ".URLROOT );
+        header("refresh:0; url= " . URLROOT);
     }
-
 }

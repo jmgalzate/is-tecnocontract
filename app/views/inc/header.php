@@ -70,7 +70,7 @@
                 style=" position: fixed; height: auto; margin-left: -10px;">
                 <ul class="nav flex-column flex-nowrap overflow-hidden">
                     
-                    <!-- TODO: add an if condition if there is any active session -->
+                    <!-- TODO: add an if condition if there is any active session show close session if not, show start session-->
                     <li class="nav-item">
                         <a class="nav-link text-truncate" href="<?php echo URLROOT?>session/closeSession"><i class="fas fa-times-circle" style="color: #E88AA2 !important"></i> <span class="d-none d-sm-inline">Cerrar Sesión</span></a>
                     </li>
