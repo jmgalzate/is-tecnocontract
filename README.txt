@@ -19,3 +19,5 @@ Inside docker file:
 mysql: it's de script for create the database and insert some test information
 php: it's the php.ini configured for working with nginx and xdebug (optional). This php.ini should be copy into the php conf folder, in my case it was /etc/php/8.1/fpm/
 nginx: it's the site configuration. This config file should be pasted on the nginx sites folder, in my case it was /etc/nginx/sites-available/, and then create a simlink file to the folder /etc/nginx/sites-enabled
+
+Server root: /var/www/is-tecnocontract. If you want to have it on the /var/www/html/is-tecnocontract/, just remember to modify the file nginx file tecnocontract with the new root directory.
