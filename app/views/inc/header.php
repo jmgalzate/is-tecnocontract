@@ -10,8 +10,11 @@
     <title><?php echo SITENAME; ?></title>
 
     <!-- Bootstrap 5 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
 
     <!-- Icons library -->
     <script src="https://kit.fontawesome.com/73d11385a4.js" crossorigin="anonymous"></script>
@@ -32,69 +35,66 @@
     ?>
 
     <script>
-    function callData(id, value, option, page)
-            {
-                $.ajax({
-                    
-                    type:'POST', //aqui puede ser igual get
-                    url: page, //aqui va tu direccion donde esta tu funcion php
-                    data: {
-                        option  :   option,
-                        value   :   value
-                    },//aqui tus datos
-                    befoeSend: () => {
-                        $('#' + id).html("Procesando...");
-                    },
-                    success:(response) => {
-                        $('#' + id).html(response);
-                    },
-                error:() => {
-                    $('#' + id).html("Error en proceso ajax");
-                }
-                });
-            }
+    function callData(id, value, option, page) {
+        $.ajax({
 
-            $(function () {
-                $('[data-toggle="tooltip"]').tooltip()
-            })
+            type: 'POST', //aqui puede ser igual get
+            url: page, //aqui va tu direccion donde esta tu funcion php
+            data: {
+                option: option,
+                value: value
+            }, //aqui tus datos
+            befoeSend: () => {
+                $('#' + id).html("Procesando...");
+            },
+            success: (response) => {
+                $('#' + id).html(response);
+            },
+            error: () => {
+                $('#' + id).html("Error en proceso ajax");
+            }
+        });
+    }
+
+    $(function() {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
     </script>
 
 </head>
 
 <body>
-        <div class="container-fluid">
+    <div class="container-fluid">
         <div>
-            <div class="col-1 collapse show d-md-flex bg-light pt-1 pl-0 min-vh-100" id="sidebar" style=" position: fixed; height: auto; margin-left: -10px;">
+            <div class="col-1 collapse show d-md-flex bg-light pt-1 pl-0 min-vh-100" id="sidebar"
+                style=" position: fixed; height: auto; margin-left: -10px;">
                 <ul class="nav flex-column flex-nowrap overflow-hidden">
-                    <!--
-                    <li class="nav-item">
-                        <a class="nav-link text-truncate" href="pages/closeSession"><i class="fas fa-times-circle" style="color: #E88AA2 !important"></i> <span class="d-none d-sm-inline">Cerrar Sesión</span></a>
-                    </li>
-                    -->
-                    <li class="nav-item">
-                        <a class="nav-link text-truncate" href="<?php echo URLROOT?>pages/portal"><i class="fas fa-user-circle" style="color: #1A3B47 !important"></i> <span class="d-none d-sm-inline">Inicio</span></a>
-                    </li>
-                    <!--
-                    <li class="nav-item">
-                        <a class="nav-link collapsed text-truncate" href="#submenu1" data-toggle="collapse" data-target="#submenu1"><i class="fa fa-table" style="color: #639FCB !important"></i> <span class="d-none d-sm-inline">Formularios</span></a>
-                        <div class="collapse" id="submenu1" aria-expanded="false">
-                            <ul class="flex-column pl-2 nav">
-                                <li class="nav-item"><a class="nav-link py-0" href="<?php #echo URLROOT;?>/calidad/admin"><span>Calidad
-                                            Canales</span></a>
-                                </li>
-                                <li class="nav-item"><a class="nav-link py-0" href="<?php #echo URLROOT;?>/GTR/admin"><span>GTR Presenciales</span></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
                     
-                    <li class="nav-item"><a class="nav-link text-truncate" href="<?php #echo URLROOT;?>/pages/analytics"><i class="fa fa-bar-chart" style="color: #F7AC6F !important"></i>
-                            <span class="d-none d-sm-inline">Analytics</span></a></li>
-                    <li class="nav-item"><a class="nav-link text-truncate" href="<?php #echo URLROOT;?>/working/wadmin"><i class="fas fa-address-book" style="color: #7874B4 !important"></i>
-                            <span class="d-none d-sm-inline">Working</span></a></li>
-                    -->
-                    <!-- <li class="nav-item"><a class="nav-link text-truncate" href="#"><i class="fa fa-download" style="color: #79C5B4 !important"></i> <span class="d-none d-sm-inline">Exportes</span></a></li> -->
-                    <li class="nav-item"><a class="nav-link text-truncate" href="<?php echo URLROOT?>pages/about"><i class="fas fa-users" style="color: #1A3B47 !important"></i> <span class="d-none d-sm-inline">Contáctanos</span></a></li>
+                    <!-- TODO: add an if condition if there is any active session -->
+                    <li class="nav-item">
+                        <a class="nav-link text-truncate" href="<?php echo URLROOT?>session/closeSession"><i class="fas fa-times-circle" style="color: #E88AA2 !important"></i> <span class="d-none d-sm-inline">Cerrar Sesión</span></a>
+                    </li>
+                    <!-- -->
+                    
+                    <li class="nav-item">
+                        <a class="nav-link text-truncate" href="<?php echo URLROOT?>pages/portal"><i
+                                class="fas fa-user-circle" style="color: #1A3B47 !important"></i> <span
+                                class="d-none d-sm-inline">Inicio</span></a>
+                    </li>
+
+                    <li class="nav-item"><a class="nav-link collapsed text-truncate"
+                            href="<?php echo URLROOT?>formularios/asesoria" data-toggle="collapse"
+                            data-target="#submenu1"><i class="fa fa-table" style="color: #639FCB !important"></i> <span
+                                class="d-none d-sm-inline">Contáctanos</span></a>
+                    </li>
+
+                    <li class="nav-item"><a class="nav-link text-truncate" href="#"><i class="fa fa-download"
+                                style="color: #79C5B4 !important"></i> <span
+                                class="d-none d-sm-inline">Exportes</span></a></li>
+
+                    <li class="nav-item"><a class="nav-link text-truncate" href="<?php echo URLROOT?>pages/about"><i
+                                class="fas fa-users" style="color: #1A3B47 !important"></i> <span
+                                class="d-none d-sm-inline">Nosotros</span></a></li>
                 </ul>
 
             </div>
