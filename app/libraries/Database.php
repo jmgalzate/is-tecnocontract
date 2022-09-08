@@ -1,4 +1,4 @@
-<?php  
+<?php
 
 /*
 * PDO Database Class
@@ -8,7 +8,8 @@
 * Return rows and results
 */
 
-class Database {
+class Database
+{
     private $host = DB_HOST;
     private $user = DB_USER;
     private $pass = DB_PASS;
@@ -17,10 +18,11 @@ class Database {
 
     private $dbh, $stmt, $error;
 
-    public function __construct () {
+    public function __construct()
+    {
         //Set DSN
 
-        $dsn = 'mysql:host='.$this->host.'; dbname='.$this->dbname;
+        $dsn = 'mysql:host=' . $this->host . '; dbname=' . $this->dbname;
         $options = [
             // PDO::ATTR_PERSISTENT => true,
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
@@ -30,29 +32,31 @@ class Database {
         //Create a PDO instance
         try {
             $this->dbh = new PDO($dsn, $this->user, $this->pass, $options);
-        } catch (PDOException $e){
+        } catch (PDOException $e) {
             $this->error = $e->getMessage();
             echo $this->error;
         }
     }
 
     //Prepare statement with query
-    public function query ($sql) { 
+    public function query($sql)
+    {
         $this->stmt = $this->dbh->prepare($sql);
     }
 
-    public function bind ($param, $value, $type = NULL) { 
-        if(is_null($type)){
-            switch(true){
+    public function bind($param, $value, $type = NULL)
+    {
+        if (is_null($type)) {
+            switch (true) {
                 case is_int($value):
                     $type = PDO::PARAM_INT;
-                break;
+                    break;
                 case is_bool($value):
                     $type = PDO::PARAM_BOOL;
-                break;
+                    break;
                 case is_null($value):
                     $type = PDO::PARAM_NULL;
-                break;
+                    break;
                 default:
                     $type = PDO::PARAM_STR;
             }
@@ -62,33 +66,47 @@ class Database {
     }
 
     // Execute preare statement
-    public function execute () { 
+    public function execute()
+    {
         return $this->stmt->execute();
     }
 
     // Get results set as array of objects
-    public function resultSet () { 
+    public function resultSet()
+    {
         $this->execute();
         return $this->stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
     // Get single record as object
-    public function single () { 
+    public function single()
+    {
         $this->execute();
         return $this->stmt->fetch(PDO::FETCH_OBJ);
     }
 
     //
-    public function rowCount () {
+    public function rowCount()
+    {
         return $this->stmt->rowCount();
     }
 
-    public function lastInsertId(){
+    public function lastInsertId()
+    {
         return $this->dbh->lastInsertId();
     }
 
-    function __destruct () {
+    function __destruct()
+    {
         $this->dbh = null;
     }
 
+    public function arraysql($result)
+    {
+        $arrayresult = array();
+        foreach ($result as $key => $value) {
+            $arrayresult = $value;
+        }
+        return $arrayresult;
+    }
 }

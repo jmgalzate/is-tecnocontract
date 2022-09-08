@@ -64,7 +64,7 @@
 <body>
         <div class="container-fluid">
         <div>
-            <div class="col-2 collapse show d-md-flex bg-light pt-2 pl-0 min-vh-100" id="sidebar" style=" position: fixed; height: auto; margin-left: -11px;">
+            <div class="col-1 collapse show d-md-flex bg-light pt-1 pl-0 min-vh-100" id="sidebar" style=" position: fixed; height: auto; margin-left: -10px;">
                 <ul class="nav flex-column flex-nowrap overflow-hidden">
                     <!--
                     <li class="nav-item">
@@ -99,4 +99,4 @@
 
             </div>
 
-            <div style="margin-left: 17%; padding: 10px;" id="central">
+            <div style="margin-left: 10%; padding: 10px;" id="central">

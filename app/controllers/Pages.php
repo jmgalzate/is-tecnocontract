@@ -26,12 +26,5 @@ class Pages extends Controller
 
 
 
-    public function arraysql($result)
-    {
-        $arrayresult = array();
-        foreach ($result as $key => $value) {
-            $arrayresult = $value;
-        }
-        return $arrayresult;
-    }
+
 }

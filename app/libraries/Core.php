@@ -7,8 +7,8 @@
 */
 
 class Core {
-    protected $currentController; //= 'Pages';
-    protected $currentMethod; // = 'portal';
+    protected $currentController = 'Pages';
+    protected $currentMethod = 'portal';
     protected $params = [];
 
     public function __construct()
@@ -56,6 +56,7 @@ class Core {
 
     public function getUrl()
     {
+        /** TODO: update the filter for the URL for preventing code injection */
             $data= $_GET;
             return $data;
 
