@@ -1,24 +1,27 @@
-// function callData(id, value, option, page)
-// {
-//     $.ajax({
-//         async: true,
-//         type:'POST', //aqui puede ser igual get
-//         url: `../monitoringCenter/app/${page}`,//aqui va tu direccion donde esta tu funcion php
-//         data: {
-//             option  :   option,
-//             value   :   value
-//         },//aqui tus datos
-//         befoeSend: () => {
-//             $('#' + id).html("Procesando...");
-//         },
-//         success:(response) => {
-//             $('#' + id).html(response);
-//         },
-//        error:() => {
-//            $('#' + id).html("Error en proceso ajax");
-//        }
-//      });
-// }
+function callData(id, value, option, page) {
+    $.ajax({
+
+        type: 'POST', //aqui puede ser igual get
+        url: page, //aqui va tu direccion donde esta tu funcion php
+        data: {
+            option: option,
+            value: value
+        }, //aqui tus datos
+        befoeSend: () => {
+            $('#' + id).html("Procesando...");
+        },
+        success: (response) => {
+            $('#' + id).html(response);
+        },
+        error: () => {
+            $('#' + id).html("Error en proceso ajax");
+        }
+    });
+}
+
+$(function() {
+    $('[data-toggle="tooltip"]').tooltip()
+})
 
 function alerta(a) {
     alert(a);

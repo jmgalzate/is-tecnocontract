@@ -25,7 +25,7 @@ class Requerimientos extends Database {
         return $this->db->resultSet();
     }
 
-    public function insertAsesoria($data){
+    public function sqlInsert($data){
         $insert = "INSERT INTO requerimiento (tiporeqid, nombre, email, telefono, observacion, prioridad, fechareq) VALUES ('".$data['tipoRequerimiento']."', '".$data['inputNombre']."', '".$data['inputEmail']."', '".$data['inputTelefono']."', '".$data['inputObservacion']."', ".$data['inputPrioridad'].", '".date('Y-m-d H:i:s')."')";
 
         $this->query=$this->insertRequerimiento($insert);

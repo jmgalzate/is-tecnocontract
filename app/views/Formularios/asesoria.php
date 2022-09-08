@@ -7,8 +7,8 @@ require(APPROOT.'/views/inc/header.php');
 
 <p>Para conocer más de nuestros productos y solicitar una asesoría personalizada, por favor envíanos los datos solicitados a continuación, uno de nuestros asesores se pondrá en contacto contigo lo antes posible</p>
 
-<div class="position-relative" style="margin-right: 20%; margin-left:20%; margin-top:2%; padding: 3%;">
-<form class="row g-3" method="POST" action="<?php echo URLROOT; ?>Formularios/recibeAsesoria" >
+<div class="position-relative" style="margin-right: 30%; margin-left:10%; margin-top:2%; padding: 3%;">
+<form class="row g-3" method="POST" action="<?php echo URLROOT; ?>Formularios/recibeRequerimiento" >
 <div class="row g-2 align-items-center">
   <div class="col-md-4">
     <label for="inputNombre" class="form-label">Nombre</label>
@@ -45,12 +45,11 @@ require(APPROOT.'/views/inc/header.php');
 </form>
 </div>
 
+<div>
 <?PHP 
-//print_r($data['formAsesoria']);
-echo $data['asesoria'];
-//echo $data['test'];
+echo isset($data['Gracias']) ? $data['Gracias'] : '';
 ?>
-
+</div>
 <?php  
 #Footer:
 require(APPROOT.'/views/inc/footer.php');

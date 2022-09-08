@@ -5,8 +5,8 @@ require(APPROOT.'/views/inc/header.php');
 
 <h1>Solicitud de soporte técnico</h1>
 
-<div>
-<form class="row g-3" method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
+<div class="position-relative" style="margin-right: 30%; margin-left:10%; margin-top:2%; padding: 3%;">
+<form class="row g-3" method="POST" action="<?php echo URLROOT; ?>Formularios/recibeRequerimiento">
   <div class="col-md-3">
     <label for="inputNombre" class="form-label">Nombre</label>
     <input type="text" class="form-control" id="inputNombre" name="inputNombre">
@@ -22,8 +22,8 @@ require(APPROOT.'/views/inc/header.php');
   <div class="col-md-3">
     <label for="tipoRequerimiento" class="form-label">Tipo Requerimiento</label>
     <select id="tipoRequerimiento" class="form-select" name="tipoRequerimiento">
-        <option selected value = "FPR">Falla en PRD</option>  
-        <option selected value = "FQS">Falla en QAS</option>
+      <option selected value = "FPR">Falla en Producción</option>  
+      <option selected value = "FQS">Falla en QAS</option>
       <option selected value = "SOL">Solicitud de Servicio</option>
       <option selected value = "MAN">Mantenimiento</option>
     </select>
@@ -42,11 +42,16 @@ require(APPROOT.'/views/inc/header.php');
   <textarea class="form-control" aria-label="Detalle del requerimiento" id="inputObservacion" name="inputObservacion"></textarea>
 </div>
   <div class="col-12">
-    <button type="submit" class="btn btn-primary" name="enviarContactanos" id="enviarContactanos">Enviar</button>
+    <button type="submit" class="btn btn-primary" name="enviarSoporte" id="enviarSoporte">Enviar</button>
   </div>
 </form>
 </div>
 
+<div>
+<?PHP 
+echo isset($data['Gracias']) ? $data['Gracias'] : '';
+?>
+</div>
 
 <?php  
 #Footer:
