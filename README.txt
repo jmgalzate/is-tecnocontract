@@ -12,4 +12,10 @@ Relevant information about the construction for this application:
 - Framework: MVC - artesanal creation (pure PHP)
 - Bootstrap 5
 
-Altough the application is constructed for spanish speakers, I decided to create the comments in English because of stantards 
+Altough the application is constructed for spanish speakers, I decided to create the comments in English because of stantards. 
+
+Inside docker file: 
+
+mysql: it's de script for create the database and insert some test information
+php: it's the php.ini configured for working with nginx and xdebug (optional). This php.ini should be copy into the php conf folder, in my case it was /etc/php/8.1/fpm/
+nginx: it's the site configuration. This config file should be pasted on the nginx sites folder, in my case it was /etc/nginx/sites-available/, and then create a simlink file to the folder /etc/nginx/sites-enabled
