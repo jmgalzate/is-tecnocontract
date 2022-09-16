@@ -2,29 +2,17 @@
 #Header
 require(APPROOT.'/views/inc/header.php');
 ?>
-
-<h4><?php echo $data['page'];?></h4>
-
-<div style="margin-left: 5%; margin-top: 5%">
+<div style="margin-left: 1%; margin-top: 2%">
     <h1>Contratos Tecnológicos</h1>
     <h2>Tecno Contract S.A.</h2>
 
     <h3>Somos tu aliado estratégico para la gestión de la información de tu empresa</h3>
     </br>
-    <p>En nuestra página WEB podrás realizar las siguientes gestiones:</p>
-
-    <ui>
-        <li>Solicitar una asesoría personalizada para tu negocio</li>
-        <li>Contratar nuestros productos</li>
-        <li>Solicitar soporte a tu servicios</li>
-        <li>Enviar la confirmación de tu pago</li>
-    </ui>
-
     </br>
 
     <h3>Nuestros servicios: </h3>
 
-    <div style="margin-right: 20%; margin-left: 20%;">
+    <div style="margin-right: 5%; margin-left: 10%;">
         <table class="table table-hover">
             <tr>
                 <th>Servicio</th>

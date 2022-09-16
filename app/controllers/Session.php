@@ -68,6 +68,6 @@ class Session extends Controller
         session_start();
         session_destroy();
 
-        header("Location:" . URLROOT);
+        header("Location:" . URLROOT.'Pages/portal');
     }
 }

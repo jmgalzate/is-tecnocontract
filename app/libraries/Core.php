@@ -10,13 +10,40 @@ class Core {
     protected $currentController = 'Pages';
     protected $currentMethod = 'portal';
     protected $params = [];
+    protected $groupRoles = [
+        'ADM' => [
+            'Miempresa/miempresa',
+            'Formulrios/soporte'
+        ],
+        'USU' => [
+            'Miempresa/miempresa'
+        ]
+    ];
 
     public function __construct()
     {
+
         // print_r($this->getUrl());
 
-        $url = $this->getUrl();
+        
+        // TODO: to add a check point for roles permissions from here to control the access to controllers and methods:
+ /*           
+        if (!isset($_SESSION['login_name']) || !isset($_SESSION['type_user'])) {
+            $url = [
+                "controller" => 'Session',
+                "action" => 'login'
+            ];
+        } else {
+            $url = $this->getUrl();
 
+            if($_SESSION['type_user'] == 'ADM') {
+                $urlv = $url['controller'].'/'.$url['action'];
+                $urlu = $this->groupRoles['ADM'];
+                in_array($urlv,$urlu);
+            }
+        }
+
+ */       
         // Look in controller for firt value
 
         if (!empty($url)) {
