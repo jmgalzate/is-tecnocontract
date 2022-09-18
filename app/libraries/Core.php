@@ -10,20 +10,12 @@ class Core {
     protected $currentController = 'Pages';
     protected $currentMethod = 'portal';
     protected $params = [];
-    protected $groupRoles = [
-        'ADM' => [
-            'Miempresa/miempresa',
-            'Formulrios/soporte'
-        ],
-        'USU' => [
-            'Miempresa/miempresa'
-        ]
-    ];
+    protected $groupRoles = [];
 
     public function __construct()
     {
 
-        // print_r($this->getUrl());
+        $url = $this->getUrl();
 
         
         // TODO: to add a check point for roles permissions from here to control the access to controllers and methods:
