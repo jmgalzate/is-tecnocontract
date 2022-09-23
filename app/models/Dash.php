@@ -10,7 +10,7 @@ Class Dash Extends Controller {
         $this->db = new Database;
     }
 
-    public function serviciosContratados($username){
+    public function serviciosContratados(String $username){
 
         $query="SELECT 
                 e.contratoid Contrato,
@@ -20,15 +20,16 @@ Class Dash Extends Controller {
             INNER JOIN personas p ON p.personaid  = u.personaid 
             INNER JOIN emprecontract e ON p.empresaid = e.empresaid 
             INNER JOIN servicios s ON e.servid = s.servid 
-            WHERE u.username = '".$username."'";
+            WHERE u.username = :username";
 
         $this->db->query($query);
+        $this->db->bind('username', $username);
         $this->dataInfo = $this->db->resultSet();
         $this->dataInfo = json_decode(json_encode($this->dataInfo), true);
         return $this->dataInfo;
     }
 
-    public function ultimasFacturas($username){
+    public function ultimasFacturas(String $username){
 
         $query="SELECT 
                 f.facturaid Factura,
@@ -39,18 +40,18 @@ Class Dash Extends Controller {
             INNER JOIN personas p ON p.personaid  = u.personaid 
             INNER JOIN emprecontract e ON p.empresaid = e.empresaid 
             INNER JOIN factura f ON p.empresaid = f.empresaid 
-            WHERE u.username = '".$username."'
+            WHERE u.username = :username
             GROUP BY f.facturaid 
             ORDER BY f.fechafact DESC 
             LIMIT 5";
 
         $this->db->query($query);
+        $this->db->bind('username', $username);
         $this->dataInfo = $this->db->resultSet();
-       // $this->dataInfo = json_decode(json_encode($this->dataInfo), true);
         return $this->dataInfo;
     }
 
-    public function pendientesPago($username){
+    public function pendientesPago(String $username){
         $query="SELECT 
                 f.facturaid Factura,
                 f.fechafact Fecha,
@@ -60,18 +61,18 @@ Class Dash Extends Controller {
             INNER JOIN personas p ON p.personaid  = u.personaid 
             INNER JOIN emprecontract e ON p.empresaid = e.empresaid
             INNER JOIN factura f ON p.empresaid = f.empresaid 
-            WHERE u.username = '".$username."'
+            WHERE u.username = :username
             AND f.pagoestado = 0 
             GROUP BY f.facturaid 
             ORDER BY f.fechafact DESC";
             
         $this->db->query($query);
+        $this->db->bind('username', $username);
         $this->dataInfo = $this->db->resultSet();
-        $this->dataInfo = json_decode(json_encode($this->dataInfo), true);
         return $this->dataInfo;
     }
 
-    function __destructu () {
+    function __destruct () {
         $this->db = null;
     }
 
