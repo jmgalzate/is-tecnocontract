@@ -3,8 +3,8 @@
 class SessionM extends Controller
 {
     private $db;
-    private $sessionInfo;
-    private $name, $password;
+    private String $name;
+    private String $password;
     public $session, $sessionarray;
 
     function __construct()
@@ -13,20 +13,21 @@ class SessionM extends Controller
     }
 
 
-    function getSession($names, $passwords)
+    function getSession(String $names, String $passwords)
     {
-        $query = "SELECT username, rolid type_user FROM usuarios WHERE username = '$names' AND pass = MD5('$passwords')";
+        $query = "SELECT username, rolid type_user FROM usuarios WHERE username = :nombre AND pass = MD5(:palabraclave)";
         $this->db->query($query);
+        $this->db->bind(':nombre', $names);
+        $this->db->bind(':palabraclave', $passwords);
         return $this->db->single();
     }
 
-    function startSession(string $name, string $password)
+    function startSession(String $name, String $password)
     {
         $this->name = $name;
         $this->password = $password;
 
         $this->session = $this->getSession($this->name, $this->password);
-        // !empty($this->session) ? $this->session = $this->session['0'] : $this->session = '';
         $this->sessionarray = (array) $this->session;
 
         return $this->sessionarray;

@@ -19,11 +19,7 @@
 
     <?php
     /** PHP functions */
-    require(APPROOT . '/public/php/functions.php');
-
-    /** Session Confirmation */
-    $nombre = isset($_SESSION['login_name']) ? $_SESSION['login_name'] : '';
-    $type_user = isset($_SESSION['type_user']) ? $_SESSION['type_user'] : '';
+    require(APPROOT . '/functions/php/functions.php');
     ?>
 
 </head>

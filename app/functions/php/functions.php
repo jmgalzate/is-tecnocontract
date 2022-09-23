@@ -10,15 +10,14 @@ function arraysql ($result) {
   return $arrayresult;
 };
 
-
 /** This function read the table headers and after that the table rows */
 function bigtable($data) {
   echo "<tr>";
   
         foreach ($data as $arrayKey => $valor) {
-  
-              foreach ($valor as $key => $value) {
-                  echo "<th style= '
+
+            foreach ($valor as $key => $value) {
+                echo "<th style= '
                   background-color: #FFEA80; 
                   border-top-left-radius: 1em 1em;
                   border-top-right-radius: 1em 1em;

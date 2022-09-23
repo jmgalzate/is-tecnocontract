@@ -3,9 +3,11 @@
 class Session extends Controller
 {
 
-    public function __construct()
-    {
-    }
+    /**
+     * TODO:
+     * 1. To create a method to organize the permissions- and login information
+     * 2. To define private and functions properties and functions
+     */
 
     public function login()
     {
@@ -40,7 +42,7 @@ class Session extends Controller
                     $login->startSession($usuario, $password);
                     $dataLog = $login->sessionarray;
 
-                    if (!isset($$dataLog['username']) || empty($dataLog) ) {
+                    if (!isset($dataLog['username']) ) {
 
                         $errorSession .= "Los datos ingresados no coinciden";
                         $data = [

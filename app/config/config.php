@@ -1,21 +1,21 @@
 <?php  
 
 /**
- * This faile contains some CONSTANTS defined to be used in the entire application:
+ * This file contains some CONSTANTS defined to be used in the entire application:
  */
 
 //Database params for localhost
-define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
-define('DB_PASS', 'S4p3r34ud3779**');
-define('DB_DBNAME', 'tccontract');
-define('DB_CHARSET', 'utf8');
+const DB_HOST = 'localhost';
+const DB_USER = 'root';
+const DB_PASS = 'S4p3r34ud3779**';
+const DB_DBNAME = 'tccontract';
+const DB_CHARSET = 'utf8';
 
 //APP Root
-define('APPROOT', dirname(dirname(__FILE__)));
+define('APPROOT', dirname(__FILE__, 2));
 
 // URL Root
-define('URLROOT', 'http://localhost:8001/');
+const URLROOT = 'http://localhost:8001/';
 
 //Site name
-define('SITENAME', 'TecnoContract');
+const SITENAME = 'TecnoContract';

@@ -16,26 +16,12 @@ class Core {
     {
 
         $url = $this->getUrl();
-
         
-        // TODO: to add a check point for roles permissions from here to control the access to controllers and methods:
- /*           
-        if (!isset($_SESSION['login_name']) || !isset($_SESSION['type_user'])) {
-            $url = [
-                "controller" => 'Session',
-                "action" => 'login'
-            ];
-        } else {
-            $url = $this->getUrl();
+        /**
+         * TODO: add a method for checking the URL permissions and return the value of the URL.
+         * 
+         */
 
-            if($_SESSION['type_user'] == 'ADM') {
-                $urlv = $url['controller'].'/'.$url['action'];
-                $urlu = $this->groupRoles['ADM'];
-                in_array($urlv,$urlu);
-            }
-        }
-
- */       
         // Look in controller for firt value
 
         if (!empty($url)) {
@@ -69,22 +55,14 @@ class Core {
         // Get params
         $this->params = $url ? array_values($url) : [];
 
-        //Call a calback with array of params
+        //Call a callback with array of params
         call_user_func_array([$this->currentController, $this->currentMethod], $this->params);
     } // End construct's method
 
-    public function getUrl()
+    public function getUrl(): array
     {
         /** TODO: update the filter for the URL for preventing code injection */
-            $data= $_GET;
-            return $data;
+        return $_GET;
 
-        /*
-        if (isset($_GET['url'])) {
-            $url    = rtrim($_GET['url'], '/');
-            $url    = filter_var($url, FILTER_SANITIZE_URL);
-            $url    = explode('/', $url);
-            return $url;
-        }*/
     }
 } // Enc Core's class

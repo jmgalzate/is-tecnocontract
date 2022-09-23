@@ -10,13 +10,15 @@
 
 class Database
 {
-    private $host = DB_HOST;
-    private $user = DB_USER;
-    private $pass = DB_PASS;
-    private $dbname = DB_DBNAME;
-    private $charset = DB_CHARSET;
+    private String $host = DB_HOST;
+    private String $user = DB_USER;
+    private String $pass = DB_PASS;
+    private String $dbname = DB_DBNAME;
+    private String $charset = DB_CHARSET;
 
-    private $dbh, $stmt, $error;
+    private $stmt;
+    private string $error;
+    private PDO $dbh;
 
     public function __construct()
     {
@@ -47,25 +49,18 @@ class Database
     public function bind($param, $value, $type = NULL)
     {
         if (is_null($type)) {
-            switch (true) {
-                case is_int($value):
-                    $type = PDO::PARAM_INT;
-                    break;
-                case is_bool($value):
-                    $type = PDO::PARAM_BOOL;
-                    break;
-                case is_null($value):
-                    $type = PDO::PARAM_NULL;
-                    break;
-                default:
-                    $type = PDO::PARAM_STR;
-            }
+            $type = match (true) {
+                is_int($value) => PDO::PARAM_INT,
+                is_bool($value) => PDO::PARAM_BOOL,
+                is_null($value) => PDO::PARAM_NULL,
+                default => PDO::PARAM_STR,
+            };
         }
 
         $this->stmt->bindValue($param, $value, $type);
     }
 
-    // Execute preare statement
+    // Execute prepare statement
     public function execute()
     {
         return $this->stmt->execute();

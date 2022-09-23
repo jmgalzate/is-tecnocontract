@@ -2,22 +2,15 @@
 
 class Requerimientos extends Database {
 
-    private $db;
-    public $query;
+    private Database $db;
+    protected $query;
 
     public function __construct()
     {
         $this->db = new Database;
     }
 
-    public function insertRequerimiento($data)
-    {
-        $query = $data;
-        $this->db->query($query);
-        $this->db->execute();
-    }
-
-    public function getRequerimientos($data)
+    public function getRequerimientos(array $data)
     {
         $query = $data;
 
@@ -25,10 +18,18 @@ class Requerimientos extends Database {
         return $this->db->resultSet();
     }
 
-    public function sqlInsert($data){
-        $insert = "INSERT INTO requerimiento (tiporeqid, nombre, email, telefono, observacion, prioridad, fechareq, username) VALUES ('".$data['tipoRequerimiento']."', '".$data['inputNombre']."', '".$data['inputEmail']."', '".$data['inputTelefono']."', '".$data['inputObservacion']."', ".$data['inputPrioridad'].", '".date('Y-m-d H:i:s')."', '".$data['username']."')";
+    public function sqlInsert(array $data):void {
+        $insert = "INSERT INTO requerimiento (tiporeqid, nombre, email, telefono, observacion, prioridad, fechareq, username) VALUES (:tipoRequerimiento, :inputNombre, :inputEmail, :inputTelefono, :inputObservacion, :inputPrioridad, '".date('Y-m-d H:i:s')."', :username)";
 
-        $this->query=$this->insertRequerimiento($insert);
-        return $insert;
+        $this->db->query($insert);
+        $this->db->bind('tipoRequerimiento', $data['tipoRequerimiento']);
+        $this->db->bind('inputNombre', $data['inputNombre']);
+        $this->db->bind('inputEmail', $data['inputEmail']);
+        $this->db->bind('inputTelefono', $data['inputTelefono']);
+        $this->db->bind('inputObservacion', $data['inputObservacion']);
+        $this->db->bind('inputPrioridad', $data['inputPrioridad']);
+        $this->db->bind('username', $data['username']);
+
+        $this->db->execute();
     }
 }
