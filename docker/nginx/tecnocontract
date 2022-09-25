@@ -7,12 +7,12 @@ server {
 	listen 8001;
 	listen [::]:8001;
 
-	server_name is-tecnocontract;
+	server_name _;
 
-	root /var/www/is-tecnocontract;
+	#root /var/www/is-tecnocontract;
+	root /Users/juangomez/PhpstormProjects/is-tecnocontract;
 	index index.php index.html index.htm;
 
-	#Nueva configuración añadida desde acá{
 	autoindex on;
 
 	if (-e $request_filename) {
@@ -28,21 +28,20 @@ server {
 	}
 
 	#pass PHP scripts to FastCGI server
-	
-	location ~ \.php$ {
-		
-		include 	snippets/fastcgi-php.conf;
-		fastcgi_pass 	unix:/var/run/php/php8.1-fpm.sock;
 
-		#Nueva configuración añdida desde acá{
+	location ~ \.php$ {
+
+		include 	snippets/fastcgi-php.conf;
+		#fastcgi_pass 	unix:/var/run/php/php8.1-fpm.sock;
+		fastcgi_pass    127.0.0.1:9000;
+
 		fastcgi_split_path_info 	^(.+\.php)(.*)$;
-		#fastcgi_index 			index.php;
-		fastcgi_param SCRIPT_FILENAME 	$document_root$fastcgi_script_name;
+		#fastcgi_index 		index.php;
+		fastcgi_param       SCRIPT_FILENAME 	$document_root$fastcgi_script_name;
 		include 			fastcgi_params;
-		#Hasta acá}
 	}
 
-	location /app {
-	deny all;
+	location /app/ {
+	deny All;
 	}
 }
