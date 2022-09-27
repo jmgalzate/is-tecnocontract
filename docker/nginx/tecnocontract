@@ -41,7 +41,11 @@ server {
 		include 			fastcgi_params;
 	}
 
-	location /app/ {
-	deny All;
+	location /app {
+	deny all;
+	}
+
+	location /docker {
+	deny all;
 	}
 }
