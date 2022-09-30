@@ -13,7 +13,7 @@ class SessionM extends Controller
     }
 
 
-    function getSession(String $names, String $passwords)
+    function getSession(String $names, String $passwords): object
     {
         $query = "SELECT username, rolid type_user FROM usuarios WHERE username = :nombre AND pass = MD5(:palabraclave)";
         $this->db->query($query);
@@ -22,22 +22,18 @@ class SessionM extends Controller
         return $this->db->single();
     }
 
-    function startSession(String $name, String $password)
+    function startSession(String $name, String $password): object
     {
         $this->name = $name;
         $this->password = $password;
 
         $this->session = $this->getSession($this->name, $this->password);
-        $this->sessionarray = (array) $this->session;
-
-        return $this->sessionarray;
+        return $this->session;
     }
 
     function closeSession()
     {
-
         session_destroy();
-
         header("refresh:0; url= " . URLROOT);
     }
 }

@@ -2,6 +2,7 @@
 
 class Session extends Controller
 {
+    private mixed $dashModel;
 
     /**
      * TODO:
@@ -31,7 +32,7 @@ class Session extends Controller
 
                 if (empty($usuario) || empty($password)) {
 
-                    !empty($usuario) ? $usuario = htmlspecialchars($usuario) : $errores .= 'Por favor ingresa un usuario <br />';
+                    !empty($usuario) ?  htmlspecialchars($usuario) : $errores .= 'Por favor ingresa un usuario <br />';
                     !empty($password) ? htmlspecialchars($password) : $errores .= 'Por favor ingresa tu password <br />';
 
                     $data = [
@@ -39,10 +40,9 @@ class Session extends Controller
                     ];
                 } else {
                     $login = $this->dashModel = $this->model('SessionM');
-                    $login->startSession($usuario, $password);
-                    $dataLog = $login->sessionarray;
+                    $dataLog = $login->startSession($usuario, $password);
 
-                    if (!isset($dataLog['username']) ) {
+                    if (!isset($dataLog->username) ) {
 
                         $errorSession .= "Los datos ingresados no coinciden";
                         $data = [
@@ -50,12 +50,9 @@ class Session extends Controller
                         ];
 
                     } else {
-                        $username = $dataLog['username'];
-                        $type_user = $dataLog['type_user'];
 
-                        session_start();
-                        $_SESSION['login_name'] = $username;
-                        $_SESSION['type_user'] = $type_user;
+                        $_SESSION['login_name'] = $dataLog->username;
+                        $_SESSION['type_user'] = $dataLog->type_user;
 
                         $data = [
                             'title' => 'Bienvenid@'
@@ -63,7 +60,6 @@ class Session extends Controller
                     }
                 }
             }
-
 
             $data = json_decode(json_encode($data));
 
@@ -78,6 +74,7 @@ class Session extends Controller
     public function closeSession()
     {
         session_destroy();
+        //$this->db->closeDatabase();
         header("Location:" . URLROOT . 'Pages/portal');
     }
 }

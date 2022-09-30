@@ -3,6 +3,7 @@
 require(APPROOT . '/views/inc/header.php');
 
 if (isset($_SESSION['login_name']) || isset($_SESSION['type_user'])) {
+
     echo '<h1>' . $data->title . '</h1>';
     echo '<h2>' . $_SESSION['login_name'] . '</h2>';
 

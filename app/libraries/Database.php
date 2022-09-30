@@ -41,12 +41,12 @@ class Database
     }
 
     //Prepare statement with query
-    public function query($sql)
+    public function query($sql): void
     {
         $this->stmt = $this->dbh->prepare($sql);
     }
 
-    public function bind($param, $value, $type = NULL)
+    public function bind($param, $value, $type = NULL): void
     {
         if (is_null($type)) {
             $type = match (true) {
@@ -91,12 +91,12 @@ class Database
         return $this->dbh->lastInsertId();
     }
 
-    function __destruct()
+    function closeDatabase(): void
     {
         $this->dbh = null;
     }
 
-    public function arraysql($result)
+    public function arraysql($result): array
     {
         $arrayresult = array();
         foreach ($result as $key => $value) {
